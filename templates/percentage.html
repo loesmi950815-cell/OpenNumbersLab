@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Percentage Calculator</title>
+</head>
+<body>
+    <h1>Percentage Calculator</h1>
+    <form method="post">
+        Part: <input type="number" name="part" step="any" required><br>
+        Whole: <input type="number" name="whole" step="any" required><br>
+        <button type="submit">Calculate</button>
+    </form>
+
+    {% if result %}
+        <h2>Result: {{ result }}%</h2>
+    {% endif %}
+
+    <a href="/">Back to Home</a>
+</body>
+</html>
