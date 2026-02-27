@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Work Hours Calculator</title>
+</head>
+<body>
+    <h1>Work Hours Calculator</h1>
+    <form method="post">
+        Hours per Day: <input type="number" name="hours" step="any" required><br>
+        Days: <input type="number" name="days" step="any" required><br>
+        <button type="submit">Calculate</button>
+    </form>
+
+    {% if result %}
+        <h2>Total Hours: {{ result }}</h2>
+    {% endif %}
+
+    <a href="/">Back to Home</a>
+</body>
+</html>
