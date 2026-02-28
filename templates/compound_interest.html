@@ -70,9 +70,18 @@
     Even small contributions can grow significantly over decades.
     </p>
 </section>
-    {% if result %}
-        <h2>Future Value: {{ result }}</h2>
+{% if result %}
+    {% if result is string %}
+        <p>{{ result }}</p>
+    {% else %}
+        <div class="resultado">
+            <h3>Resultados:</h3>
+            <p>Rendimiento diario: ${{ result.diario }}</p>
+            <p>Rendimiento mensual ({{ result.dias_mes }} días): ${{ result.mensual }}</p>
+            <p>Rendimiento anual: ${{ result.anual }}</p>
+        </div>
     {% endif %}
+{% endif %}
 
     <a href="/">Back to Home</a>
 </body>
