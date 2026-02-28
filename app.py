@@ -35,8 +35,8 @@ def compound_interest():
                 "dias_mes": dias_mes
             }
 
-        except:
-            result = "Invalid input"
+except Exception as e:
+    result = str(e)
 
     return render_template("compound_interest.html", result=result)
 
