@@ -3,11 +3,16 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+# Página principal
 @app.route('/')
 def home():
     return render_template("home.html")
+
+
+# Calculadora
+@app.route('/compound-interest', methods=['GET', 'POST'])
+def compound_interest():
     result = None
-    dias_mes = None
 
     if request.method == "POST":
         try:
@@ -35,5 +40,6 @@ def home():
 
     return render_template("compound_interest.html", result=result)
 
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
