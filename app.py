@@ -7,7 +7,6 @@ app = Flask(__name__)
 def home():
     return compound_interest()
 
-@app.route('/compound-interest', methods=['GET', 'POST'])
 def compound_interest():
     result = None
     dias_mes = None
