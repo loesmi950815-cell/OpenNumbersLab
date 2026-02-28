@@ -1,8 +1,12 @@
 import calendar
-from datetime import datetime
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "App is running"
+
 @app.route('/compound-interest', methods=['GET', 'POST'])
 def compound_interest():
     result = None
@@ -17,9 +21,7 @@ def compound_interest():
 
             dias_mes = calendar.monthrange(anio, mes)[1]
 
-            # Convertimos tasa anual a diaria
             tasa_diaria = tasa / 100 / 365
-
             rendimiento_diario = capital * tasa_diaria
             rendimiento_mensual = rendimiento_diario * dias_mes
             rendimiento_anual = capital * (tasa / 100)
@@ -34,4 +36,7 @@ def compound_interest():
         except:
             result = "Invalid input"
 
-    return render_template('compound_interest.html', result=result)
+    return render_template("compound_interest.html", result=result)
+
+if __name__ == "__main__":
+    app.run(debug=True)
