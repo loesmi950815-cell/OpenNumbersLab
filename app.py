@@ -2,38 +2,20 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route('/')
 def home():
-    return render_template("home.html")
+    return "App is running"
 
-@app.route("/finance/compound-interest", methods=["GET", "POST"])
+@app.route('/compound-interest', methods=['GET', 'POST'])
 def compound_interest():
     result = None
-    if request.method == "POST":
-        principal = float(request.form["principal"])
-        rate = float(request.form["rate"]) / 100
-        years = float(request.form["years"])
-        result = principal * ((1 + rate) ** years)
-    return render_template("compound.html", result=result)
+    if request.method == 'POST':
+        try:
+            principal = float(request.form.get('principal', 0))
+            rate = float(request.form.get('rate', 0)) / 100
+            years = float(request.form.get('years', 0))
+            result = principal * (1 + rate) ** years
+        except:
+            result = "Invalid input"
 
-@app.route("/student/percentage", methods=["GET", "POST"])
-def percentage():
-    result = None
-    if request.method == "POST":
-        part = float(request.form["part"])
-        whole = float(request.form["whole"])
-        result = (part / whole) * 100
-    return render_template("percentage.html", result=result)
-
-@app.route("/productivity/work-hours", methods=["GET", "POST"])
-def work_hours():
-    result = None
-    if request.method == "POST":
-        hours_per_day = float(request.form["hours"])
-        days = float(request.form["days"])
-        result = hours_per_day * days
-    return render_template("workhours.html", result=result)
-
-import os
-    port = int(os.environ.get("PORT", 10000))
-    app.run(host='0.0.0.0', port=port)
+    return render_template('compound_interest.html', result=result)
