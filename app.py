@@ -3,9 +3,9 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def home():
-    return "App is running"
+    return compound_interest()
 
 @app.route('/compound-interest', methods=['GET', 'POST'])
 def compound_interest():
