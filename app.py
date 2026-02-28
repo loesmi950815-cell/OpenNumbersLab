@@ -6,7 +6,7 @@ app = Flask(__name__)
 # Página principal
 @app.route('/')
 def home():
-    return render_template("home.html")
+    return "HOME FUNCIONA"
 
 
 # Calculadora
