@@ -5,9 +5,6 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    return compound_interest()
-
-def compound_interest():
     result = None
     dias_mes = None
 
